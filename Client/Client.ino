@@ -28,7 +28,7 @@ Task myLoggingTask(10000, TASK_FOREVER, []() {
         JsonObject& msg = jsonBuffer.createObject();
 #endif
     msg["topic"] = "sensor";
-    msg["value"] = finalData;
+    msg["value"] = deviceID+finalData;
 
     String str;
 #if ARDUINOJSON_VERSION_MAJOR==6
