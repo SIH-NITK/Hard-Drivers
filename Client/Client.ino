@@ -9,7 +9,7 @@
 #define   MESH_PASSWORD   "somethingSneaky"
 #define   MESH_PORT       5555
 String deviceID = "1";
-String finalData="";
+String finalData="";                           //FinalString to be sent along with deviceID
 Scheduler     userScheduler; // to control your personal task
 painlessMesh  mesh;
 
@@ -65,7 +65,7 @@ void setup() {
 
 void loop() {
   // it will run the user scheduler as well
-  finalData=receiveData();
+  finalData=receiveData();                     //function to read String from sender over Software Serial (Remove all unnecessary data from Serial Monitor)
   mesh.update();
   finalData="";
 }
@@ -99,6 +99,6 @@ void receivedCallback( uint32_t from, String &msg ) {
 String receiveData()
 {
 
-//Need to modify this code such that it reads only the String required
+//Need to modify this such that it reads only the String required
 
 }
