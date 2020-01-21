@@ -8,7 +8,8 @@
 #define   MESH_PREFIX     "whateverYouLike"
 #define   MESH_PASSWORD   "somethingSneaky"
 #define   MESH_PORT       5555
-
+String deviceID = "1";
+String finalData="";
 Scheduler     userScheduler; // to control your personal task
 painlessMesh  mesh;
 
@@ -27,7 +28,7 @@ Task myLoggingTask(10000, TASK_FOREVER, []() {
         JsonObject& msg = jsonBuffer.createObject();
 #endif
     msg["topic"] = "sensor";
-    msg["value"] = "45";
+    msg["value"] = finalData;
 
     String str;
 #if ARDUINOJSON_VERSION_MAJOR==6
@@ -64,7 +65,9 @@ void setup() {
 
 void loop() {
   // it will run the user scheduler as well
+  finalData=receiveData();
   mesh.update();
+  finalData="";
 }
 
 void receivedCallback( uint32_t from, String &msg ) {
@@ -91,4 +94,11 @@ void receivedCallback( uint32_t from, String &msg ) {
       }
       Serial.printf("Handled from %u msg=%s\n", from, msg.c_str());
   }
+}
+
+String receiveData()
+{
+
+//Need to modify this code such that it reads only the String required
+
 }
