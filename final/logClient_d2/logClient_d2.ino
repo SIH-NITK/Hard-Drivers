@@ -28,7 +28,7 @@ Task myLoggingTask(10000, TASK_FOREVER, []() {
 #endif
     msg["topic"] = "sensor";
     //msg["value"] = "*0003999456789123467891234567890450";
-    msg["value"] = "*000234567890875443356778899877650";
+    msg["value"] = "*000213.01000074.78900078899877650";
 
     String str;
 #if ARDUINOJSON_VERSION_MAJOR==6
